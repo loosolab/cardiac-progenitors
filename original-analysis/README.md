@@ -24,7 +24,27 @@ if(!dir.exists("original_analysis/supplementary_data")) {
 }
 ```
 
-Then, use `aws.s3::save_object()` with the following parameters to download individual files:
+Then, use the following code snipped to download all files:
+
+```
+data_files <- c("Isl1_cardiac_branch_expression.txt", "Isl1_endo_branch_expression.txt", "dev_cluster_specific_2.Rda", "dev_clustered_cluster_specific_2.Rda", "scData_filtered_2.Rda", "variability_cluster_specific_2.Rda", "variability_clustered_cluster_specific_2.Rda")
+
+for(file in data_files) {
+    aws.s3::save_object(paste0("original-data/", file),
+                        "data-cpc-2018",
+                        paste0("original_analysis/data/", file))
+}
+
+supplementary_data_files <- c("Isl1-DM.Rdata", "Isl1-diffExprs.Rdata", "Isl1-markers.Rdata", "Nkx2-5-DM.Rdata", "Nkx2-5-diffExprs.Rdata", "Nkx2-5-markers.Rdata", "c1_subset.Rdata", "wu.Rdata")
+
+for(file in supplementary_data_files) {
+    aws.s3::save_object(paste0("original-data/", file),
+                        "data-cpc-2018",
+                        paste0("original_analysis/supplementary_data/", file))
+}
+```
+
+or use `aws.s3::save_object()` with the following parameters to download individual files:
 
 Object | Target | Call
 ------ | ------ | ----
