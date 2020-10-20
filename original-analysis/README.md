@@ -12,8 +12,8 @@ From within R, install [cloudyr/aws.s3](https://github.com/cloudyr/aws.s3) as fo
 
 ```
 remotes::install_github("cloudyr/aws.s3")
-Sys.setenv("AWS_S3_ENDPOINT" = "s3.mpi-bn.mpg.de",
-           "AWS_DEFAULT_REGION" = "")
+Sys.setenv("AWS_S3_ENDPOINT" = "mpi-bn.mpg.de",
+           "AWS_DEFAULT_REGION" = "s3")
 
 if(!dir.exists("original_analysis/data")) {
     dir.create("original_analysis/data", recursive = TRUE)
